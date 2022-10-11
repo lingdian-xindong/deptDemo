@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .t1{
+            height: 40px;
+            background-color:lightgrey;
+        }
+        form{
+            display: inline;
+        }
+        .d1{
+            background-color: deepskyblue;
+        }
+        .d2{
+            background-color: aliceblue;
+        }
+        .d3{
+            background-color: red;
+        }
+        .r1{
+            width: 100%;
+        }
+        .r1 td{
+            display: inline;
+        }
+        .d1{
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .a1{
+            color: white;
+            text-decoration: none;
+        }
+        .a2{
+            color: black;
+            text-decoration: none;
+        }
+        .a3{
+            color: white;
+            text-decoration: none;
+        }
+        table{
+            width: 700px;
+        }
+        .tr1 td{
+            color: lightgrey;
+        }
+        .td1{
+            color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>部门列表</h1>
+    <table class="t1">
+        <tr class="r1">
+            <td class="d1"><a class="a1" th:href="@{dept(method='addJump')}">创建</a></td>
+            <td class="d2"><a class="a2" th:href="@{dept(method='findDeptById')}">编辑</a></td>
+            <td class="d3"><a class="a3" th:href="@{dept(method='delDept')}">删除</a></td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr class="tr1">
+            <td></td>
+            <td>编号</td>
+            <td>名称</td>
+            <td>所属省份</td>
+            <td>部门人数</td>
+            <td>描述</td>
+        </tr>
+        <tr th:each="item:${deptList}">
+            <td><input type="checkbox" name="checkbox" th:text="${item.deptId}"></td>
+            <td th:text="${item.deptNumber}"></td>
+            <td class="td1" th:text="${item.deptName}"></td>
+            <td th:text="${item.province}"></td>
+            <td th:text="${item.people}"></td>
+            <td th:text="${item.depict}"></td>
+        </tr>
+    </table>
+</body>
+</html>
